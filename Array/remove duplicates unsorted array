@@ -1,0 +1,19 @@
+//gfg
+//hashmap 
+//this works for sorted array as well
+
+class Solution {
+  public:
+    vector<int> removeDuplicate(vector<int>& arr) {
+        // code here
+        unordered_map<int,int> mp;
+        vector<int> ret;
+        for(int i=0;i<arr.size();i++){
+            mp[arr[i]]++;
+            if(mp[arr[i]]==1){
+                ret.push_back(arr[i]);
+            }
+        }
+        return ret;
+    }
+};
