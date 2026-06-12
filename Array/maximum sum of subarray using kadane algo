@@ -1,0 +1,19 @@
+//gfg
+//kadane's algorithm
+//maximum sum of subarray including negative elements 
+//sliding window window does same work but that fails for negative elements
+
+class Solution {
+  public:
+    int maxSubarraySum(vector<int> &arr) {
+        // Code here
+        int sum=arr[0];
+        int ans=arr[0];
+        for(int i=1;i<arr.size();i++){
+            sum=sum+arr[i];
+            sum=max(sum,arr[i]);
+            ans=max(sum,ans);
+        }
+        return ans;
+    }
+};
