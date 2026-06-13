@@ -1,0 +1,23 @@
+//gfg
+
+class Solution {
+  public:
+    char getMaxOccuringChar(string& s) {
+        //  code here
+        map<char,int> mp;
+        for(int i=0;i<s.size();i++){
+            mp[s[i]]++;
+        }
+        char ch='a';
+        int maxCount=0;
+        for(auto element:mp){
+            char key=element.first;
+            int value=element.second;
+            if(value>maxCount){
+                maxCount=value;
+                ch=key;
+            }
+        }
+        return ch;
+    }
+};
