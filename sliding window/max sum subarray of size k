@@ -1,0 +1,23 @@
+//gfg
+//max sum subarray of size k
+
+class Solution{
+  public:
+    long maxSubarraySum(vector<int>& Arr, int K){
+        int n=Arr.size();
+        int low=0;
+        int high=K-1;
+        int sum=0;
+        for(int i=0;i<=high;i++){
+             sum+=Arr[i];
+        }
+        int ans=sum;
+        while(high<n-1){
+            low++;
+            high++;
+            sum=sum-Arr[low-1]+Arr[high];
+            ans=max(ans,sum);
+        }
+        return ans;
+    }
+};
