@@ -1,0 +1,19 @@
+//leetcode 560
+
+class Solution {
+public:
+    int subarraySum(vector<int>& a, int k) {
+        int sum=0;
+        int n=a.size();
+        int res=0;
+        unordered_map<int,int> f;
+        f[0]=1;                          //It handles the case where a subarray starting from index 0 itself has sum equal to k.
+        for(int i=0;i<n;i++){
+            sum+=a[i];
+            int ques=sum-k;             //if a previous prefix sum is sum-k, then the subarray between that position and the current position will have sum k.
+            res+=f[ques];
+            f[sum]++;
+        }
+        return res;
+    }
+};
