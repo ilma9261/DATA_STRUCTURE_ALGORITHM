@@ -1,0 +1,17 @@
+//leetcode 1749
+
+class Solution {
+public:
+    int maxAbsoluteSum(vector<int>& a) {
+        int n=a.size();
+        int maximum=a[0];
+        int minimum=a[0];
+        int ans=abs(a[0]);
+        for(int i=1;i<n;i++){
+            maximum=max(a[i],maximum+a[i]);
+            minimum=min(a[i],minimum+a[i]);
+            ans=max(ans,max(maximum,abs(minimum)));
+        }
+        return ans;
+    }
+};
