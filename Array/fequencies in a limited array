@@ -1,0 +1,19 @@
+//gfg
+//Case 1: Empty vector + push_back() (Correct)
+//Case 2: Empty vector + indexing (Wrong)
+
+
+class Solution {
+  public:
+    // Function to count the frequency of all elements from 1 to N in the array.
+    vector<int> frequencyCount(vector<int>& arr) {
+        // code here
+        int n=arr.size();
+        vector <int,int> freq(n,0);       // Create vector of size n initialized with 0
+        for(int i=0;i<n;i++){
+            int key= arr[i];
+            freq[key]++;
+        }
+        return freq;
+    }
+};
