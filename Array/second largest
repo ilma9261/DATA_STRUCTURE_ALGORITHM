@@ -5,8 +5,8 @@ class Solution {
     int getSecondLargest(vector<int> &arr) {
         int largest=arr[0];
         int second_largest=-1;
-        for(int i=1;i<arr.size();i++){
-            if(arr[i]>largest){
+        for(int i=0;i<arr.size();i++){           // we can start loop from 1 too           
+              if(arr[i]>largest){
                 second_largest=largest;
                 largest=arr[i];
             }
