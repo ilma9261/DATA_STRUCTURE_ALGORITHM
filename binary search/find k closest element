@@ -1,0 +1,40 @@
+// leetcode 658
+
+//BINARY SEARCH + TWO POINTER
+
+class Solution {
+public:
+    vector<int> findClosestElements(vector<int>& arr, int k, int x) {
+        int low = 0;
+        int high = arr.size() - k;
+
+        // arr[mid]
+        //     ↓
+       // leftmost element of the current window
+       
+        // arr[mid + k]
+         //     ↓
+         // first element just outside the window on the right
+
+        while (low < high) {
+            int mid = low + (high - low) / 2;
+
+            if (x - arr[mid] > arr[mid + k] - x) {
+                low = mid + 1;
+            } 
+            else {
+                high = mid;
+            }
+        }
+
+        // When low == high, we have found the starting index
+        // of the k closest elements.
+        // Now simply take k elements starting from low.
+        vector<int> ans;
+
+        for(int i = low; i < low + k; i++){
+            ans.push_back(arr[i]);
+        }
+        return ans;
+    }
+};
