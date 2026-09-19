@@ -1,0 +1,49 @@
+// leetcode 1
+
+// RIGHT SOLUTION
+
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        unordered_map<int,int> mp;
+        vector<int> v;
+        for(int i=0;i<nums.size();i++){
+            int k = target - nums[i];
+            if(mp.find(k)!=mp.end()){
+                v.push_back(mp[k]);
+                v.push_back(i);
+                return v;
+                // return {mp[complement], i};     ✅ Found complement's index and current index
+            }
+            mp[nums[i]]=i;        // You actually can store all elements in the map first, but doing a two-pass approach requires adding an explicit check to avoid using the same index twice and handling duplicate numbers carefully.
+        }
+        return v;
+        // return {};
+    }
+};
+
+
+// WRONG SOLUTION BCZ we cant sort because it will change original indices which we have to return 
+// BUT IT IS RIGHT SOLUTION FOR TWO SUM || LEETCODE 167 WHERE INPUT ARRAY IS SORTED
+
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        sort(nums.begin(),sort.end());        
+        int i = 0;
+        int j = nums.size() - 1;
+        while (i<j) {
+            int sum = nums[i] + nums[j];
+            if (sum == target) {
+                return {i,j};
+            }
+            if (sum < target) {
+                i++;
+            }
+            if (sum > target) {
+                j--;
+            }
+        }
+        return {};
+    }
+};
