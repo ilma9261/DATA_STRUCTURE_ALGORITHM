@@ -1,0 +1,80 @@
+// leetcode 151
+
+// OPTIMAL
+
+class Solution {
+public:
+    string reverseWords(string s) {
+        reverse(s.begin(),s.end());
+        string ans="";
+        for(int i=0;i<s.size();i++){
+            string word="";
+            while(i<s.size() && s[i]!=' '){
+                word+=s[i];
+                i++;                                // we have to increment  inside while loop 
+            }
+            if(word!=""){
+                reverse(word.begin(),word.end());
+                ans+=' ' + word;
+            }
+        }
+        return ans.substr(1);               // string.substr(start, length);
+    }
+};
+
+// BRUTE FORCE 
+
+class Solution {
+  public:
+    string reverseWords(string &s) {
+        // code here
+        int n=s.size();
+        string res="";
+        string word="";
+        vector<string> v;
+        for(int i=0;i<n;i++){
+            if(s[i]!='.'){
+                word+=s[i];
+            }
+            else{
+                if(word!=""){
+                v.push_back(word);
+                word="";
+                }
+            }
+        }
+        if(word!=""){
+        v.push_back(word);
+        }
+        for(int i=v.size()-1;i>=0;i--){
+            res+=v[i];
+            if(i!=0){
+            res+='.';
+            }
+        }
+        return res;
+    }
+};
+
+
+class Solution {
+public:
+    string reverseWords(string s) {
+        stringstream ss(s);
+        string word;
+        vector<string> v;
+        while(ss>>word){
+            v.push_back(word);
+        }
+        string ans="";
+        for(int i=v.size()-1;i>=0;i--){
+            if(i!=0){
+                ans+=v[i]+' ';
+            }
+            else{
+                ans+=v[i];
+            }
+        }
+        return ans;
+    }
+};
