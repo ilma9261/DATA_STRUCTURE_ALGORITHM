@@ -1,4 +1,5 @@
 // leetcode 151 && leetcode 557
+// time complexity is o(n) bcz we are increamenting same variable in both loops so it is not nested loop 
 
 class Solution {
 public:
