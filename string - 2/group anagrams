@@ -1,0 +1,27 @@
+// leetcode 49
+
+class Solution {
+public:
+    vector<vector<string>> groupAnagrams(vector<string>& strs) {
+        unordered_map<string,vector<string>> mp;
+
+        // Step 1: mp[s]
+//The [] operator looks up key s in the map and returns a reference to the value associated with it.
+//Since the value type is a vector<string>, mp[s] returns a vector.
+
+//Step 2: (returned_vector).push_back(str[i])
+//Now that C++ has the vector, it calls .push_back() on that vector to append str[i]
+
+        int n=strs.size();
+        for(int i=0;i<n;i++){
+            string temp=strs[i];
+            sort(temp.begin(),temp.end());
+            mp[temp].push_back(strs[i]);
+        }
+        vector<vector<string>> v;
+        for(auto x:mp){
+            v.push_back(x.second);
+        }
+        return v;
+    }
+};
