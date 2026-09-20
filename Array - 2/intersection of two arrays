@@ -37,7 +37,9 @@ public:
         while(i < nums1.size() && j < nums2.size()) {
 
             if(nums1[i] == nums2[j]) {
+
                 // ADDED: Only push if 'v' is empty or the element is not a duplicate of the last inserted element
+
                 if (v.empty() || v.back() != nums1[i]) {
                     v.push_back(nums1[i]);
                 }
