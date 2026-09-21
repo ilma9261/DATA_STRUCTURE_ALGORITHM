@@ -7,6 +7,7 @@ Output:
 
 
 
+// BRUTE FORCE 
 
 #include <iostream>
 #include <bits/stdc++.h>
@@ -84,3 +85,21 @@ int main() {
 
     return 0;
 }
+
+// USING WHILE LOOP
+
+class Solution {
+public:
+    void moveZeroes(vector<int>& nums) {
+         int n=nums.size();
+        int i=0;
+        int j=0;
+        while(i<n){                            // we can also write i<n && j<n
+            if(nums[i]!=0){
+                swap(nums[i],nums[j]);
+                j++;
+            }
+            i++;
+        }
+    }
+}; 
