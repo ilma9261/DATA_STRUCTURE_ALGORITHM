@@ -1,0 +1,54 @@
+// leetcode 941
+
+// ITS TWO POINTER 
+
+class Solution {
+public:
+    bool validMountainArray(vector<int>& arr) {
+        int i=0;
+        int n=arr.size();
+        while(i+1<n && arr[i]<arr[i+1]){
+            i++;
+        }
+        if(i==0 || i==n-1){
+            return false;
+        }
+        while(i+1<n && arr[i]>arr[i+1]){
+            i++;
+        }
+        if(i==n-1){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+};
+
+// WE CAN ALSO WRITE IT LIKE 
+
+class Solution {
+public:
+    bool validMountainArray(vector<int>& arr) {
+        int i=0;
+        int j=1;
+        int n=arr.size();
+        while(j<n && arr[i]<arr[j]){
+            i++;
+            j++;
+        }
+        if(i==0 || i==n-1){
+            return false;
+        }
+        while(j<n && arr[i]>arr[j]){
+            i++;
+            j++;
+        }
+        if(i==n-1){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+};
