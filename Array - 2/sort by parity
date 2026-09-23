@@ -1,0 +1,31 @@
+// 905
+
+class Solution {
+public:
+    vector<int> sortArrayByParity(vector<int>& nums) {
+        int n=nums.size();
+        int i=0;
+        int j=0;
+        while(j<n){
+            if(nums[i]%2==0){
+                i++;
+                j++;
+            }
+            else{
+                while(j<n && nums[j]%2!=0 ){       // What if ALL remaining elements are odd so use j<n but not like this nums[j]%2!=0 && j<n because boundary needs to eb checked first . 
+                // Rule: Always put boundary checks (j < n) first: while (j < n && nums[j] % 2 != 0).
+
+                    j++;
+                }
+
+               // GUARD: Only swap if j found a valid even number inside the array
+
+                if (j < n) {                 // this if condition is neccesary
+                    swap(nums[i], nums[j]);
+                    i++;
+                }
+            }
+        }
+        return nums;
+    }
+};
