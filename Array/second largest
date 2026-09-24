@@ -4,7 +4,7 @@ class Solution {
   public:
     int getSecondLargest(vector<int> &arr) {
         int largest=arr[0];
-        int second_largest=-1;
+        int second_largest=-1;                      // you can write INT_MIN to handle negative elements
         for(int i=0;i<arr.size();i++){           // we can start loop from 1 too           
               if(arr[i]>largest){
                 second_largest=largest;
