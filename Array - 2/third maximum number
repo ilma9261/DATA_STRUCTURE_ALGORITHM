@@ -1,0 +1,31 @@
+// leetcode 414
+
+class Solution {
+public:
+    int thirdMax(vector<int>& nums) {
+        long largest=nums[0];
+        int n=nums.size();
+        long second_largest=LLONG_MIN;
+        long third_largest=LLONG_MIN;
+        for(int i=1;i<n;i++){
+            if(nums[i]>largest){
+                third_largest=second_largest;
+                second_largest=largest;
+                largest=nums[i];
+            }
+            else if(nums[i]<largest && nums[i]>second_largest){
+                third_largest=second_largest;
+                second_largest=nums[i];
+            }
+            else if(nums[i]<second_largest && nums[i]>third_largest){
+                third_largest=nums[i];
+            }
+        }
+        if(third_largest!=LLONG_MIN){
+            return third_largest;
+        }
+        else{
+            return largest;
+        }
+    }
+};
