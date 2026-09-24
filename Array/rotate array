@@ -9,9 +9,19 @@ public:
     void rotate(vector<int>& nums, int k) {
         int n=nums.size();
         k=k%n;
+
+// for right rotate
+
        reverse(nums.begin(),nums.end());
        reverse(nums.begin(),nums.begin()+k);
        reverse(nums.begin()+k,nums.end());
+
+// for left rotate
+
+reverse(nums.begin(), nums.begin() + k);
+        reverse(nums.begin() + k, nums.end());
+        reverse(nums.begin(), nums.end());
+
     }
 };
 
