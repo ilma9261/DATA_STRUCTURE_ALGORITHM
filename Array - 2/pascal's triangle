@@ -1,0 +1,44 @@
+// leetcode 118
+
+class Solution {
+public:
+    vector<vector<int>> generate(int numRows) {
+        // This will store the complete Pascal's Triangle
+        vector<vector<int>> v;
+
+        // First row is always {1}
+        v.push_back({1});
+
+        // Start creating rows from row 1
+        // row 0 is already created
+        for(int row=1;row<numRows;row++){
+
+             // This vector will store the current row
+            vector<int> temp;
+
+             // Every row starts with 1
+            temp.push_back(1);
+
+              // We only calculate the middle elements
+            // because first and last elements are always 1
+            for(int i=1;i<row;i++){
+
+                 // Take the two numbers directly above
+                //
+                // result[row-1][i-1] → upper-left number
+                // result[row-1][i]   → upper-right number
+                //
+                // Add them to get the current number
+                int k=v[row-1][i-1]+v[row-1][i];
+                temp.push_back(k);
+            }
+
+             // Every row also ends with 1
+            temp.push_back(1);
+
+             // Store the newly created row
+             v.push_back({temp});
+        }
+        return v;
+    }
+};
