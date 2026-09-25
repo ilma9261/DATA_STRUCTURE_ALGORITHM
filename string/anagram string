@@ -1,5 +1,7 @@
 //gfg
-// using hashmap but we can also sort both the strings and them compare them directly 
+// using hashmap but we can also sort both the strings and them compare them directly but we have more optimal approach as frequency bucket
+
+// BRUTE FORCE SPACE IS NOT OPTIMISED
 
 class Solution {
   public:
@@ -19,5 +21,59 @@ class Solution {
         else{
             return false;
         }
+    }
+};
+
+// OPTIMAL  1 
+
+// Creating a fixed static array like int count[26] and creating a std::vector<int> count(26) both result in $\mathcal{O}(1)$ space 
+complexity because their size is capped at 26.
+
+class Solution {
+public:
+    bool isAnagram(string s, string t) {
+        if(s.size()!=t.size()){
+            return false;
+        }
+        // 1. Declare and initialize 26 frequency buckets to 0
+       vector<int> v(26);              //  vector<int> v(26,0);  
+        for(int i=0;i<s.size();i++){
+            v[s[i]-'a']++;         // s[i] - 'a' converts a character into a bucket index (0 to 25)
+            // example - a' - 'a' = 0 (Bucket 0)   and 'b' - 'a' = 1 (Bucket 1)
+            v[t[i]-'a']--;
+        }
+        // 3. Check if all buckets returned to zero
+        for(int i=0;i<26;i++){
+            if(v[i]!=0){
+                return false ;
+            }
+        }
+        return true;
+    }
+};
+
+// OPTIMAL 2
+
+
+class Solution {
+public:
+    bool isAnagram(string s, string t) {
+        if(s.size()!=t.size()){
+            return false;
+        }
+        // 1. Declare and initialize 26 frequency buckets to 0
+        int count[26]={0};
+        for(int i=0;i<s.size();i++){
+            count[s[i]-'a']++;         // s[i] - 'a' converts a character into a bucket index (0 to 25)
+            // example - a' - 'a' = 0 (Bucket 0)   and 'b' - 'a' = 1 (Bucket 1)
+            count[t[i]-'a']--;
+        }
+        // 3. Check if all buckets returned to zero
+        for(int i=0;i<26;i++){
+            if(count[i]!=0){
+                return false ;
+            }
+        }
+        return true;
     }
 };
