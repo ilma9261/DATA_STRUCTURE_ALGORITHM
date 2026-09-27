@@ -1,0 +1,27 @@
+// leetcode 347
+
+// bucket sort is better approach but i solved like this
+
+class Solution {
+public:
+    vector<int> topKFrequent(vector<int>& nums, int k) {
+        int n=nums.size();
+        unordered_map<int,int> mp;
+         for(int i=0;i<n;i++){
+            mp[nums[i]]++;
+        }
+        vector<int> v;
+            while(k>0){
+                 int freq=nums[0];
+                for(int i=1;i<n;i++){
+                    if(mp[nums[i]]>mp[freq]){
+                        freq=nums[i];
+                    }
+                }
+                 v.push_back(freq);
+                        mp.erase(freq);
+                        k--;
+            }
+        return v;
+    }
+};
