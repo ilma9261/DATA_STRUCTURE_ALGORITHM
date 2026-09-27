@@ -1,0 +1,35 @@
+// leetcode 599
+
+// time o(N+M) and space (M)
+
+// "The time complexity is $\mathcal{O}(N + M)$, where $N$ and $M$ are the sizes of the two lists. If we also account for the average 
+string length $L$, hashing and comparing string keys makes it $\mathcal{O}((N + M) \times L)$."
+
+// "The auxiliary space complexity is O(M), where M is the size of list2, because we store its elements in the hash map. If we consider
+string lengths, it becomes O(M×L)."
+
+class Solution {
+public:
+    vector<string> findRestaurant(vector<string>& list1, vector<string>& list2) {
+        unordered_map<string,int> mp;
+        for(int i=0;i<list2.size();i++){
+            mp[list2[i]]=i;
+        }
+        int mini=INT_MAX;
+        vector<string> v;
+        for(int i=0;i<list1.size();i++){
+           if(mp.find(list1[i])!=mp.end()){
+             int sum=mp[list1[i]]+i;
+             if(sum<mini){
+                v.clear();                 // v.erase(it); to erase one specific element
+                v.push_back(list1[i]);
+                mini=sum;
+             }
+            else if(sum==mini){
+                v.push_back(list1[i]);
+             }
+           }
+        }
+        return v;
+    }
+};
