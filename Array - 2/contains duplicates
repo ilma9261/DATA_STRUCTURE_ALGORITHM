@@ -1,0 +1,58 @@
+// leetcode 217
+// THREE APPROACHES
+
+//1
+
+class Solution {
+public:
+    bool containsDuplicate(vector<int>& nums) {
+         int n=nums.size();
+        unordered_map<int,int> mp;
+        for(int i=0;i<n;i++){
+            mp[nums[i]]++;
+        }
+        for(int i=0;i<n;i++){
+            if(mp[nums[i]]>1){
+                return true;
+            }
+        }
+        return false;
+    }
+};
+
+// 2
+// using single pass
+class Solution {
+public:
+    bool containsDuplicate(vector<int>& nums) {
+         int n=nums.size();
+        unordered_map<int,int> mp;
+        for(int i=0;i<n;i++){
+            if(mp.find(nums[i])!=mp.end()){
+                return true;
+            }
+            else{
+                mp[nums[i]]++;
+            }
+        }
+        return false;
+    }
+};
+
+//3 
+// using set
+
+class Solution {
+public:
+    bool containsDuplicate(vector<int>& nums) {
+         int n=nums.size();
+        unordered_set<int> st;
+        for(int i=0;i<n;i++){
+            if(st.find(nums[i]) != st.end()) {
+                return true;
+            }
+            st.insert(nums[i]);
+        }
+        return false;
+    }
+};
