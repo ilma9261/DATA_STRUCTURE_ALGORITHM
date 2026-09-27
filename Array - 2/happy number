@@ -1,0 +1,26 @@
+// leetcode 202
+
+// it has o(logn) time and space complexity
+
+class Solution {
+public:
+    bool isHappy(int n) {
+        unordered_set<int> st;
+        while(n!=1){
+            int ans=0;          // reset for every new number
+          while(n>0){
+              int digit=n%10;
+            ans+=digit*digit;
+            n=n/10;
+          }
+            if(st.find(ans)!=st.end()){
+                return false;
+            }
+            else{
+                st.insert(ans);
+            }
+           n=ans;
+        }
+        return true;
+    }
+};
