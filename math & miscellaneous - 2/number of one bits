@@ -1,0 +1,19 @@
+// leetcode 191 
+
+class Solution {
+public:
+    int hammingWeight(int n) {
+        int cnt=0;
+        while(n>0){
+            if((n & 1)==1){        // Check whether the last binary bit of n is 1.
+                cnt++;
+            }
+            n=n>>1;       //  After checking the last bit, you need to remove that bit by shifting right
+        //After checking the last bit, you need to remove that bit by shifting right. example-
+        // 1011
+        //↓↓↓↓
+        // 0101
+        }
+        return cnt;
+    }
+};
