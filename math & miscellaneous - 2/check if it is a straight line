@@ -1,0 +1,17 @@
+// leetcode 1232
+
+class Solution {
+public:
+    bool checkStraightLine(vector<vector<int>>& coordinates) {
+       int y2=coordinates[1][1]- coordinates[0][1];
+       int x2=coordinates[1][0]- coordinates[0][0];
+       for(int i=2;i<coordinates.size();i++){
+        int yI=coordinates[i][1]- coordinates[0][1];
+       int xI=coordinates[i][0]- coordinates[0][0];
+       if(yI*x2!=xI*y2){
+        return false;
+       }
+       }
+       return true;
+    }
+};
