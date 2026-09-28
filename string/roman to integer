@@ -11,7 +11,7 @@ class Solution {
         int ans=0;
         for(int i=s.size()-1;i>=0;i--){
             int curr=mp[s[i]];
-            if(curr>prev){
+            if(curr>=prev){
                 ans+=curr;
             }else{
                 ans-=curr;
