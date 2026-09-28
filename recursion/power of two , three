@@ -1,0 +1,37 @@
+// leetcode 231   &&    // leetcode 326
+
+// power of two
+
+class Solution {
+public:
+    bool isPowerOfTwo(int n) {
+        if(n==1){
+            return true;
+        }
+        if(n<=0 || n%2!=0){
+            return false;
+        }
+        else{
+            return  isPowerOfTwo(n/2);
+        }
+        return false;
+    }
+};
+
+// power of three
+
+class Solution {
+public:
+    bool isPowerOfThree(int n) {
+         if(n==1){
+            return true;
+        }
+        if(n<=0 || n%3!=0){
+            return false;
+        }
+        else{
+            return  isPowerOfThree(n/3);
+        }
+        return false;
+    }
+};
