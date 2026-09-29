@@ -1,0 +1,68 @@
+// leetcode 1200
+
+// 1
+
+class Solution {
+public:
+    vector<vector<int>> minimumAbsDifference(vector<int>& arr) {
+        vector<vector<int>> v;
+        sort(arr.begin(),arr.end());
+        int n=arr.size();
+        int diff=INT_MAX;
+        int i=0;
+        int j=1;
+       while(i<n && j<n){
+        int k=arr[j]-arr[i];
+        if(k<diff){
+            diff=k;
+            v.clear();
+           if(arr[i]<arr[j]){
+          v.push_back({arr[i],arr[j]});
+           }
+           else{
+             v.push_back({arr[j],arr[i]});
+           }
+        }
+        else if(k==diff){
+           if(arr[i]<arr[j]){
+          v.push_back({arr[i],arr[j]});
+           }
+           else{
+             v.push_back({arr[j],arr[i]});
+           }
+        }
+        i++;
+        j++;
+       }
+       return v;
+    }
+};
+
+// 2
+
+class Solution {
+public:
+    vector<vector<int>> minimumAbsDifference(vector<int>& arr) {
+        // Step 1: Sort the array so adjacent elements have minimum differences
+        sort(arr.begin(), arr.end());
+        
+        vector<vector<int>> v;
+        int minDiff = INT_MAX;
+        int n = arr.size();
+        
+        // Step 2: One-pass iteration over adjacent pairs
+        for (int i = 0; i < n - 1; i++) {
+            int diff = arr[i + 1] - arr[i]; // Guaranteed >= 0 since array is sorted
+            
+            if (diff < minDiff) {
+                minDiff = diff;
+                v.clear(); // Found a smaller difference, discard previously saved pairs
+                v.push_back({arr[i], arr[i + 1]});
+            } else if (diff == minDiff) {
+                v.push_back({arr[i], arr[i + 1]});
+            }
+        }
+        
+        return v;
+    }
+};
