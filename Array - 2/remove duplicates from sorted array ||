@@ -1,0 +1,42 @@
+// leetcode 80
+
+// TWO APPROACHES
+
+// 1
+
+class Solution {
+public:
+    int removeDuplicates(vector<int>& nums) {
+        int n=nums.size();
+        int i=2;
+        if(nums.size()<=2){
+            return n;
+        }
+        for(int j=2;j<n;j++){
+            if(nums[j]!=nums[i-2]){
+                nums[i++]=nums[j];
+            }
+        }
+        return i;
+    }
+};
+
+//2
+
+class Solution {
+public:
+    int removeDuplicates(vector<int>& nums) {
+        int n=nums.size();
+        int k=2;
+        if(nums.size()<=2){
+            return n;
+        }
+        for(int i=2;i<n;i++){
+            if(nums[i]!=nums[k-2]){
+                nums[k]=nums[i];
+                k++;
+            }
+        }
+        return k;
+    }
+};
