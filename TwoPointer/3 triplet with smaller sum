@@ -9,16 +9,16 @@ class Solution {
         int count=0;
         int i=0;
         for(i=0;i<n-2;i++){
-            int j=i+1;
-            int k=n-1;
-            while(j<k){
-                int smallerSum=arr[i]+arr[j]+arr[k];
+            int left=i+1;
+            int right=n-1;
+            while(left<right){
+                int smallerSum=arr[i]+arr[left]+arr[right];
                 if(smallerSum<sum){
-                    count+=k-j;
-                    j++;
+                    count+=right-left;
+                    left++;
                 }
                 else{
-                    k--;
+                    right--;
                 }
             }
         }
