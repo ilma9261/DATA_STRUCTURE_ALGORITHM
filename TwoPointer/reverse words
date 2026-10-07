@@ -17,7 +17,7 @@ public:
                 reverse(word.begin(),word.end());
                 ans+=' ' + word;
             }
-        }
+        }                                   // You're intentionally adding a space before every word, including the first word.
         return ans.substr(1);               // string.substr(start, length);
     }
 };
