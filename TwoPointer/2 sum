@@ -1,0 +1,21 @@
+// leetcode 1
+
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        unordered_map<int,int> mp;
+        vector<int> v;
+        for(int i=0;i<nums.size();i++){
+            int k = target - nums[i];
+            if(mp.find(k)!=mp.end()){
+                v.push_back(mp[k]);
+                v.push_back(i);
+                return v;
+                // return {mp[complement], i};     ✅ Found complement's index and current index
+            }
+            mp[nums[i]]=i;        // You actually can store all elements in the map first, but doing a two-pass approach requires adding an explicit check to avoid using the same index twice and handling duplicate numbers carefully.
+        }
+        return v;
+        // return {};
+    }
+};
