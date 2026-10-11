@@ -1,0 +1,28 @@
+// leetcode 59
+
+class Solution {
+public:
+    vector<vector<int>> generateMatrix(int n) {
+        int m=n;
+        int i=0;
+        int j=-1;
+        int dir=1;
+        int val=1;
+        vector<vector<int>> v(n,vector<int>(n));       // This single line creates a 2D vector with n rows and n columns
+       while(m>0 && n>0){
+            for(int k=0;k<n;k++){
+                j+=dir;
+              v[i][j]=val++;
+            }
+            m--;
+             for(int k=0;k<m;k++){
+                i+=dir;
+                v[i][j]=val++;
+            }
+            n--;
+            dir=-1*dir;
+        }
+        return v;
+    }
+
+};
