@@ -1,0 +1,31 @@
+// leetcode 881
+
+// How could you have recognised sorting yourself?
+Whenever you encounter a problem involving:
+- Pairing elements.
+- Finding two elements satisfying a condition.
+- Minimising or maximising the number of pairs/groups.
+- Comparing the smallest and largest values.
+- A weight, sum, or capacity constraint.
+Ask yourself:
+"Would sorting help me make a decision about the smallest and largest elements?"
+
+
+class Solution {
+public:
+    int numRescueBoats(vector<int>& people, int limit) {
+        sort(people.begin(),people.end());
+        int i=0;
+        int n=people.size();
+        int j=n-1;
+        int ans=0;
+        while(i<=j){
+            if(people[i]+people[j]<=limit){
+                i++;
+            }
+            ans++;
+            j--;
+        }
+        return ans;
+    }
+};
