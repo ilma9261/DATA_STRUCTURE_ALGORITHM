@@ -2,30 +2,17 @@
 //max sum subarray of size k
 
 
-class Solution {
-  public:
-    int maxSubarraySum(vector<int>& arr, int k) {
-        // code here
-        int maxi=0;
-        int sum=0;
-        int n=arr.size();
-        for(int j=0;j<k;j++){
-            sum+=arr[j];
-        }
-        maxi=max(maxi,sum);
-        int i=0;
-        int j=k;
-        while(j<n){                   // When j == n, arr[j] means arr[n], which is outside the array. because array is n-1 for 0 based indexing
-            sum=sum-arr[i]+arr[j];
-            i++;
-            j++;
-            maxi=max(sum,maxi);
-            
-        }
-        return maxi;
-    }
-};
+interview- First, I will calculate the sum of the first K elements because I need to find the maximum sum of a subarray of size K.
 
+After calculating the first window sum, I will store it in a variable called ans.
+
+Now, instead of calculating the sum again for every window, I will use the Sliding Window technique.
+
+I will move the window one position to the right. For that, I will subtract the element that is leaving the window and add the new element that is entering the window.
+
+After every movement, I will update the maximum sum.
+
+I will repeat this until I reach the last window, and finally return the maximum sum.
 
 class Solution{
   public:
