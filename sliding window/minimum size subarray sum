@@ -1,5 +1,22 @@
-// gfg    &&     // leetcode 209
+   // leetcode 209
 
+interview- First, I will use the Sliding Window approach to solve this problem.
+
+I will use two pointers, low and high, to represent the starting and ending positions of my window.
+
+Initially, both pointers are at index 0, and the sum is 0.
+
+I will expand the window by adding elements using the high pointer.
+
+Whenever the current sum becomes greater than or equal to the target, I have found a valid subarray.
+
+Now, I will calculate its length and update the minimum length.
+
+After that, I will remove the element at the low pointer from the sum and move low forward. This helps me check whether I can get a smaller valid subarray.
+
+I will continue this process until high reaches the end of the array.
+
+If I never find a subarray whose sum is at least the target, I will return 0. Otherwise, I will return the minimum length.
 
 class Solution {
   public:
