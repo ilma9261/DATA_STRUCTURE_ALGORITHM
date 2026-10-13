@@ -1,0 +1,46 @@
+// leetcode 2176
+
+
+// This approach doesn't work because unordered_map<int,int> stores only
+// one index for each unique number. When duplicate elements occur,
+// the previous index gets overwritten (or remains unchanged after a match).
+// Therefore, we cannot check all previous occurrences of the same number,
+// resulting in missing valid pairs.
+
+class Solution {
+public:
+    int countPairs(vector<int>& nums, int k) {
+        unordered_map<int,int> mp;
+        int n=nums.size();
+        int cnt=0;
+        for(int i=0;i<n;i++){
+            if(mp.find(nums[i])!=mp.end() && (i*mp[nums[i]])%k==0 ){
+                cnt++;
+            }
+            else{
+                mp[nums[i]]=i;
+            }
+        }
+        return cnt;
+    }
+};
+
+// CORRECT SOLUTION
+// I KNOW THIS IS CONSIDERED BRUTE FORCE IN MANY QUESTIONS AND WE SOMETIME OPTIMISE IT USING HASHINGBUT HERE THIS IS THE OPTIMAL SOLUTION . 
+// WE CAN USE HASHING BUT STILL COMPLEXITY STAYS O(N2)
+
+class Solution {
+public:
+    int countPairs(vector<int>& nums, int k) {
+        int n=nums.size();
+        int cnt=0;
+        for(int i=0;i<n-1;i++){
+          for(int j=i+1;j<n;j++){
+            if(nums[i]==nums[j] && (i*j)%k==0){
+                cnt++;
+            }
+          }
+        }
+        return cnt;
+    }
+};
