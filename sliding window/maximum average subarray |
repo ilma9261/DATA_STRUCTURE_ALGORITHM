@@ -1,5 +1,25 @@
 // leetcode 643
 
+interview- In this question, I have to find the maximum average of a contiguous subarray of length K.
+
+A brute-force approach would be to calculate the average of every possible subarray of size K, but that would take more time.
+
+So, I will use the Sliding Window technique to optimise the solution.
+
+First, I will calculate the sum of the first K elements and find their average. I will store this average in a variable called `maxiAvg`, considering it as the maximum average initially.
+
+Then, I will initialise two pointers. The first pointer `i` will start from 0, and the second pointer `j` will start from K, which represents the next element entering the window.
+
+Now, I will run a while loop until `j` reaches the end of the array.
+
+For every new window, I will subtract the element that is leaving from the left side and add the new element entering from the right side.
+
+Then, I will calculate the average of the current window and compare it with the previous maximum average using the `max()` function. If the current average is greater, I will update `maxiAvg`.
+
+After that, I will move both pointers one position forward and repeat the same process.
+
+Finally, I will return `maxiAvg`, which will contain the maximum average among all possible subarrays of length K.
+
 class Solution {
 public:
     double findMaxAverage(vector<int>& nums, int k) {
