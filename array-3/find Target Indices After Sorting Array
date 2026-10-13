@@ -1,0 +1,64 @@
+// leetcode 2089
+
+// THIS SOLUTION WILL NOT WORK BCZ Because an unordered_map stores unique keys.
+
+class Solution {
+public:
+    vector<int> targetIndices(vector<int>& nums, int target) {
+        sort(nums.begin(),nums.end());
+        vector<int> v;
+        unordered_map<int,int> mp;
+        int n=nums.size();
+        for(int i=0;i<n;i++){
+            mp[nums[i]]=i;
+        }
+        for(int i=0;i<n;i++){
+            if(nums[i]==target){
+                v.push_back(mp[nums[i]]);
+            }
+        }
+        return v;
+    }
+};
+
+// CORRECT APPROACH
+// BUT SORTING IS NOT OPTIMAL HERE SO WE NEED TO FIND INDICES SOMETHING LIKE SORT WITHOUT SORTING 
+
+class Solution {
+public:
+    vector<int> targetIndices(vector<int>& nums, int target) {
+        sort(nums.begin(),nums.end());
+        vector<int> v;
+        int n=nums.size();
+        for(int i=0;i<n;i++){
+            if(nums[i]==target){
+                v.push_back(i);
+            }
+        }
+        return v;
+    }
+};
+
+// OPTIMAL
+
+class Solution {
+public:
+    vector<int> targetIndices(vector<int>& nums, int target) {
+        vector<int> v;
+        int n=nums.size();
+        int smaller=0;
+        int cnt=0;
+        for(int i=0;i<n;i++){
+            if(nums[i]<target){
+                smaller++;
+            }
+            if(nums[i]==target){
+                cnt++;
+            }
+        }
+        for(int i=0;i<cnt;i++){
+            v.push_back(smaller+i);
+        }
+        return v;
+    }
+};
