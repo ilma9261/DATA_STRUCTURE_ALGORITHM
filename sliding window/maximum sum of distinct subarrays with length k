@@ -1,5 +1,25 @@
 // leetcode 2461
 
+interview- In this question, I have to find the maximum sum of a subarray of size K, where all the elements in that subarray must be distinct.
+
+A brute-force approach would be to check every possible subarray of size K and verify whether all its elements are distinct. But that would take more time.
+
+So, I will use the Sliding Window technique along with an unordered map.
+
+First, I will calculate the sum of the first K elements and store their frequencies in the map.
+
+The map will help me check whether all the elements in the current window are distinct. If the size of the map is equal to K, it means all K elements are distinct, because the map stores only the distinct elements.
+
+If the first window contains K distinct elements, I will update my maximum sum.
+
+After that, I will slide the window one position to the right. I will remove the outgoing element from the sum and decrease its frequency in the map. If its frequency becomes zero, I will remove it from the map.
+
+Then, I will add the incoming element to the sum and increase its frequency in the map.
+
+Again, I will check whether the map size is equal to K. If all the elements are distinct, I will update the maximum sum.
+
+I will repeat this process for all the remaining windows and finally return the maximum sum.
+
 class Solution {
 public:
     long long maximumSubarraySum(vector<int>& nums, int k) {
