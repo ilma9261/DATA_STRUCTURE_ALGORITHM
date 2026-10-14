@@ -1,0 +1,26 @@
+// leetcode 697
+
+class Solution {
+public:
+    int findShortestSubArray(vector<int>& nums) {
+       unordered_map<int,int> firstOccurence;
+       unordered_map<int,int> freq;
+       int n=nums.size();
+       int degree=0;
+       int len=n;
+       for(int i=0;i<n;i++){
+        if(firstOccurence.find(nums[i])==firstOccurence.end()){
+            firstOccurence[nums[i]]=i;
+        }
+        freq[nums[i]]++;
+        if(freq[nums[i]]>degree){
+            degree=freq[nums[i]];
+            len=i-firstOccurence[nums[i]]+1;
+        }
+        if(freq[nums[i]]==degree){
+            len=min(len,i-firstOccurence[nums[i]]+1);
+        }
+       }
+       return len;
+    }
+};
