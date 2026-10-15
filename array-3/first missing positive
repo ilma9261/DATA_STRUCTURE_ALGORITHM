@@ -1,0 +1,61 @@
+// leetcode 41
+
+// leetcode asking for o(1) space so it is brute force 
+
+class Solution {
+public:
+    int firstMissingPositive(vector<int>& nums) {
+
+        int n = nums.size();
+
+        unordered_map<int,int> mp;
+
+        for(int i = 0; i < n; i++) {
+            mp[nums[i]]++;
+        }
+
+        for(int i = 1; i <= n; i++) {
+            if(mp.find(i) == mp.end()) {
+                return i;
+            }
+        }
+
+        return n + 1;
+    }
+};
+
+// ANOTHER SOLUTION STILL USING EXTRA SPACE 
+
+class Solution {
+public:
+    int firstMissingPositive(vector<int>& nums) {
+        int maxi=INT_MIN;
+        int n=nums.size();
+        for(int i=0;i<n;i++){
+            if(nums[i]>maxi){
+                maxi=nums[i];
+            }
+        }
+        unordered_map<int,int> mp;
+        for(int i=0;i<n;i++){
+            mp[nums[i]]++;
+        }
+        int ans=0;
+        for(int i=1;i<=maxi;i++){
+            if(mp.find(i)==mp.end()){
+                ans=i;
+                return ans;
+            }
+        }
+        if(maxi<0 && ans==0){
+            return 1;
+        }
+        if(ans==0){
+            ans=maxi+1;
+        }
+        return ans;
+    }
+};
+
+// wihout extra space
+
