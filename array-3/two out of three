@@ -1,0 +1,27 @@
+// leetcode 2032
+
+class Solution {
+public:
+    vector<int> twoOutOfThree(vector<int>& nums1, vector<int>& nums2, vector<int>& nums3) {
+        unordered_set<int> st1(nums1.begin(),nums1.end());
+         unordered_set<int> st2(nums2.begin(),nums2.end());
+         unordered_set<int> st3(nums3.begin(),nums3.end());
+         unordered_map<int,int> mp;
+         for(auto x:st1){
+            mp[x]++;
+         }
+          for(auto x:st2){
+            mp[x]++;
+         }
+          for(auto x:st3){
+            mp[x]++;
+         }
+         vector<int> v;
+         for(auto x:mp){
+            if(x.second>=2){
+                v.push_back(x.first);
+            }
+         }
+         return v;
+    }
+};
