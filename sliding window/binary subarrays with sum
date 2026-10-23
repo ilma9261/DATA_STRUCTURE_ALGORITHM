@@ -11,7 +11,8 @@ public:
         int zero=0;
         while(j<n){
             sum+=nums[j];
-            while(i<j && (nums[i]==0 || sum>goal)){
+            while(i<j && (nums[i]==0 || sum>goal)){       // i<=j was not working here 
+// Don't blindly replace i <= j with i < j. Understand whether an empty window is allowed by your algorithm.
                 if(nums[i]==0){
                     zero++;
                 }
