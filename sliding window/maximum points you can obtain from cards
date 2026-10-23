@@ -1,0 +1,24 @@
+// leetcode 1423
+
+// Interview tip: You can describe your current solution as a two-pointer approach using incremental replacement of left cards with right cards. Both approaches are optimal, but your current code is not conventionally classified as sliding window.
+
+class Solution {
+public:
+    int maxScore(vector<int>& cardPoints, int k) {
+        int sum=0;
+        int n=cardPoints.size();
+        for(int i=0;i<k;i++){
+            sum+=cardPoints[i];
+        }
+        int maxi=sum;
+        int i=k-1;
+        int j=n-1;
+        while(i>=0){
+           sum=sum-cardPoints[i]+cardPoints[j];
+           maxi=max(maxi,sum);
+           i--;
+           j--;
+        }
+        return maxi;
+    }
+};
