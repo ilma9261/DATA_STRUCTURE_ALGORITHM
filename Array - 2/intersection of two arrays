@@ -40,7 +40,7 @@ public:
 
                 // ADDED: Only push if 'v' is empty or the element is not a duplicate of the last inserted element
 
-                if (v.empty() || v.back() != nums1[i]) {
+                if (v.empty() || v.back() != nums1[i]) {          // v.back() != nums1[i] → Is the current element different from the last inserted element?
                     v.push_back(nums1[i]);
                 }
                 i++;
