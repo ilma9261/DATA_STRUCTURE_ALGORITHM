@@ -1,5 +1,8 @@
 // leetcode 27
 
+//1
+// THIS IS MY APPROACH NOT STANSARD ONE , IT CHANGES THE ORDER BUT THAT DOES NOT MATTER FOR QUESTION . 
+
 class Solution {
 public:
     int removeElement(vector<int>& nums, int val) {
@@ -15,5 +18,29 @@ public:
         }
       }
       return n;
+    }
+};
+
+
+// 2
+// STANDARD APPROACH 
+
+class Solution {
+public:
+    int removeElement(vector<int>& nums, int val) {
+
+        int i = 0;
+
+        for(int j = 0; j < nums.size(); j++) {
+
+            if(nums[j] != val) {
+                nums[i] = nums[j];
+                i++;
+            }
+        }                                 // You're confused because you're thinking that removing an element means decreasing the vector's actual size.
+
+But in this question, we don't actually shrink the vector! We only overwrite its elements.
+
+        return i;
     }
 };
