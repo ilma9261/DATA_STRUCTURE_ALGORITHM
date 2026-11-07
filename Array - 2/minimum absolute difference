@@ -2,6 +2,10 @@ class Solution {
 public:
     vector<vector<int>> minimumAbsDifference(vector<int>& arr) {
         vector<vector<int>> v;
+// Whenever a question asks you to find the minimum or maximum difference between pairs of numbers, consider sorting first.
+
+It is not compulsory in every such problem, but sorting often makes the solution much easier.
+
         sort(arr.begin(),arr.end());
         int n=arr.size();
         int diff=INT_MAX;
