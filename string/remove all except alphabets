@@ -6,7 +6,7 @@ class Solution {
         // code here
         string res="";
         for(int i=0;i<s.size();i++){
-            if((s[i]>='a' && s[i]<='z') || (s[i]>='A'&&s[i]<='Z')){          // always pay attention to capital letter too
+            if((s[i]>='a' && s[i]<='z') || (s[i]>='A'&&s[i]<='Z')){      //  if(isalpha(s[i]))    // always pay attention to capital letter too
                 res+=s[i];
             }
         }
