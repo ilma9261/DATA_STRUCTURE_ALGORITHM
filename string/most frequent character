@@ -1,6 +1,8 @@
 //gfg
 //hashmap
 
+// NOT OPTIMAL
+
 class Solution {
   public:
     char getMaxOccuringChar(string& s) {
@@ -22,3 +24,34 @@ class Solution {
 }
 };
     
+
+// OPTIMAL
+
+// GFG
+// Frequency array approach
+
+class Solution {
+  public:
+    char getMaxOccuringChar(string& s) {
+        int n = s.size();
+        int count[26] = {0};
+
+        // Step 1: Count frequency of each character
+        for(int i=0; i<n; i++){
+            count[s[i]-'a']++;
+        }
+
+        // Step 2: Find character with maximum frequency
+        int maxFreq = 0;
+        char maxoccur = 'a';
+
+        for(int i=0; i<26; i++){
+            if(count[i] > maxFreq){
+                maxFreq = count[i];
+                maxoccur = 'a' + i;
+            }
+        }
+
+        return maxoccur;
+    }
+};
