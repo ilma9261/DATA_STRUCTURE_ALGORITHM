@@ -1,5 +1,31 @@
 // gfg
-// not submitted , i tried everything so may be gfg has problem
+
+class Solution {
+  public:
+    vector<string> smallerAndLarge(string &s) {
+        // code here
+        stringstream ss(s);
+        string word;
+        string minWord="";
+        string maxWord="";
+        while(ss >> word){
+            if(minWord=="" && maxWord==""){
+                minWord=word;
+                maxWord=word;
+            }
+            else if(word.size()<minWord.size()){
+                 minWord=word;
+            }
+            else if(word.size()>=maxWord.size()){
+                maxWord=word;
+            }
+        }
+        return {minWord,maxWord};
+    }
+};
+
+
+// not submitted , i tried everything so may be gfg has problem so finnally found the correct answer that stringstream method
 
 class Solution {
   public:
