@@ -1,5 +1,36 @@
 // gfg
 
+// 1 stingstream
+
+class Solution {
+public:
+    string maximumFrequency(string& s) {
+        stringstream ss(s);
+        string word;
+        
+        unordered_map<string, int> freq;
+        
+        string maxWord = "";
+        int maxFreq = 0;
+
+        while (ss >> word) {
+            freq[word]++;
+            
+            // If strictly greater, update the answer word
+            // If equal, maxWord remains unchanged (preserving the first occurrence)
+            if (freq[word] > maxFreq) {
+                maxFreq = freq[word];
+                maxWord = word;
+            }
+        }
+
+        return maxWord + " " + to_string(maxFreq);
+    }
+};
+
+
+//2
+
 class Solution {
   public:
     string maximumFrequency(string& s) {
