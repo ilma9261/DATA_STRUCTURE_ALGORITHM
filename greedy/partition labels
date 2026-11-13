@@ -1,0 +1,25 @@
+// leetcode 763 
+
+// not so optimal
+
+class Solution {
+public:
+    vector<int> partitionLabels(string s) {
+        int n=s.size();
+        vector<int> ans;
+        for(int i=0;i<n;){
+            int startIndex=i;
+            int endIndex=s.rfind(s[startIndex]);
+            for(int j=startIndex+1;j<=endIndex;j++){
+                int lastIndex=s.rfind(s[j]);
+               if(lastIndex>endIndex){
+                endIndex=lastIndex;
+               }
+            }
+            int len=endIndex-startIndex+1;
+            ans.push_back(len);
+           i=endIndex+1;
+        }
+        return ans;
+    }
+};
