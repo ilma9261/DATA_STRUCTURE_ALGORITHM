@@ -1,0 +1,25 @@
+// leetcode 728
+
+
+class Solution {
+public:
+    vector<int> selfDividingNumbers(int left, int right) {
+        vector<int> v;
+        for(int i=left;i<=right;i++){
+            int n=i;
+            bool flag=true;
+            while(n>0){
+                int rem=n%10;
+                if(rem==0 || i%rem!=0){     // mentioned that A self-dividing number is not allowed to contain the digit zero.
+                 flag=false;
+                 break;           // Once a digit doesn't divide the original number, you can stop checking the remaining digits.
+                }
+                n=n/10;
+            }
+             if(flag==true){
+                 v.push_back(i);
+               }
+        }
+        return v;
+    }
+};
