@@ -1,0 +1,17 @@
+// leeetcode 1512
+
+class Solution {
+public:
+    int numIdenticalPairs(vector<int>& nums) {
+        int n=nums.size();
+        int freq[101]={0};    // cz constrains are 1  10 100 
+        // An array of size 100 has valid indices from 0 to 99 so using 101
+        int cnt=0;
+        for(int i=0;i<n;i++){
+             // Every previous occurrence makes one good pair
+             cnt+=freq[nums[i]];
+             freq[nums[i]]++;
+        }
+        return cnt;
+    }
+};
