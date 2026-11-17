@@ -1,0 +1,49 @@
+// leetcode 1365
+
+// BRUTE FORCE
+
+class Solution {
+public:
+    vector<int> smallerNumbersThanCurrent(vector<int>& nums) {
+        int n=nums.size();
+        vector<int> v;
+        for(int i=0;i<n;i++){
+            int cnt=0;
+            for(int j=0;j<n;j++){
+                if(nums[i]>nums[j]){
+                    cnt++;
+                }
+            }
+            v.push_back(cnt);
+        }
+        return v;
+    }
+};
+
+// OPTIMAL
+
+class Solution {
+public:
+    vector<int> smallerNumbersThanCurrent(vector<int>& nums) {
+        int n=nums.size();
+       int freq[101]={0};
+       // get freq of each element
+       for(int i=0;i<n;i++){ 
+        freq[nums[i]]++;
+       }
+       // count smaller numbers than each element
+       for(int i=1;i<101;i++){
+        freq[i]+=freq[i-1];
+       }
+       vector<int> ans;
+       for(int i=0;i<n;i++){
+        if(nums[i]==0){
+            ans.push_back(0);
+        }   //If nums[i] == 0, you'll access freq[-1].
+        else{
+          ans.push_back(freq[nums[i] - 1]);
+        }
+       }
+       return ans;
+    }
+};
