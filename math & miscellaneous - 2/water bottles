@@ -1,0 +1,16 @@
+// leetcode 1518
+
+class Solution {
+public:
+    int numWaterBottles(int numBottles, int numExchange) {
+        int ans=numBottles;
+       int empty=numBottles;
+        while(empty>=numExchange){
+       int refill=empty/numExchange;
+       empty=empty%numExchange;
+        ans+=refill;
+       empty+=refill;
+        }
+        return ans;
+    }
+};
