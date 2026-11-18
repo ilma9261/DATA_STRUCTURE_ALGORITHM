@@ -1,0 +1,45 @@
+// leetcode 389
+
+// not optimal 
+
+class Solution {
+public:
+    char findTheDifference(string s, string t) {
+        unordered_map<int,int> mp;
+        for(int i=0;i<s.size();i++){
+            mp[s[i]]++;
+        }
+        for(int i=0;i<t.size();i++){
+            if(mp.find(t[i])==mp.end()){
+                return t[i];
+            }
+            else{
+                mp[t[i]]--;
+                if(mp[t[i]]==0){
+                mp.erase(t[i]);
+                }
+            }
+        }
+        return -1;
+    }
+};
+
+// optimal
+// Space Complexity: $O(1)$ — Strictly 26 integers (104 bytes), independent of input string length.
+
+class Solution {
+public:
+    char findTheDifference(string s, string t) {
+        int freq[26]={0};
+        for(int i=0;i<s.size();i++){
+            freq[s[i]-'a']++;
+        }
+        for(int i=0;i<t.size();i++){
+            freq[t[i]-'a']--;
+            if(freq[t[i]-'a']<0){
+                return t[i];
+            }
+        }
+        return -1;
+    }
+};
