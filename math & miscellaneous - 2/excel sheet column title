@@ -1,0 +1,22 @@
+// leetcode 168
+
+class Solution {
+public:
+    string convertToTitle(int columnNumber) {
+        string res="";
+        while(columnNumber>0){
+            columnNumber--;
+            int rem=ColumnNumber%26;
+            res+=rem+'A';
+            columnNumber=columnNumber/26;
+        }
+        return res;
+    }
+};
+
+// Time Complexity: O(log₂₆ N)
+- The while loop runs approximately log₂₆(N) times because we divide columnNumber by 26 in every iteration.
+- reverse() takes O(k), where k is the number of characters in the result.
+- Since k = O(log₂₆ N), the overall time complexity remains O(log₂₆ N).
+
+// "The space complexity is O(log N) because we are using an extra string res to store the converted column title. The length of this string depends on the number of times we divide the input by 26
