@@ -1,0 +1,56 @@
+// leetcode 1822
+
+The error occurs because you're multiplying all the array elements. The product becomes too large to fit in the long long data type, causing integer overflow.
+
+For this problem, you don't actually need to calculate the product. You only need to determine its sign.
+Correct approach
+- If any element is 0, return 0.
+- Count the number of negative elements.
+- If the count of negative elements is even, return 1.
+- If it's odd, return -1.
+
+// wrong approach because of integer overflow
+
+class Solution {
+public:
+    int arraySign(vector<int>& nums) {
+        int n=nums.size();
+       int product=1;
+        for(int i=0;i<n;i++){
+            product*=nums[i];
+        }
+        if(product>0){
+            return 1;
+        }
+        else if(product<0){
+            return -1;
+        }
+        else{
+            return 0;
+        }
+    }
+};
+
+// correct approach
+
+class Solution {
+public:
+    int arraySign(vector<int>& nums) {
+        int n=nums.size();
+        int cnt=0;
+        for(int i=0;i<n;i++){
+            if(nums[i]==0){
+                return 0;
+            }
+           else if(nums[i]<0){
+                cnt++;
+            }
+        }
+        if(cnt%2==0){
+            return 1;
+        }
+        else{
+            return -1;
+        }
+    }
+};
